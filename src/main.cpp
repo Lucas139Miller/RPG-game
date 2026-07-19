@@ -1,6 +1,8 @@
 #include <iostream>
 
 #include <App.hpp>
+#include <KeyState.hpp>
+
 #include <SDL.h>
 
 // You shouldn't really use this statement, but it's fine for small programs
@@ -9,7 +11,8 @@ using namespace std;
 // You must include the command line parameters for your main function to be recognized by SDL
 int main(int argc, char** args) {
 
-    App app;
+    App App;
+    KeyState keyState;
 
 	// Pointers to our window and surface
 	SDL_Surface* winSurface = NULL;
