@@ -4,6 +4,8 @@
 #include "KeyState.hpp"
 #include "Player.hpp"
 #include "GameSettings.hpp"
+#include "Entity.hpp"
+#include "EntityStatus.hpp"
 
 #include <SDL.h>
 

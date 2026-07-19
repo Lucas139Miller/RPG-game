@@ -1,8 +1,39 @@
 #include "Entity.hpp"
 
-Entity::Entity(){
+Entity::Entity():Status(){
 
 }
+
+
+float Entity::get_health(){
+    return this->Status.get_health();
+}
+float Entity::get_max_health(){
+    return this->Status.get_max_health();
+}
+float Entity::get_xp(){
+    return this->Status.get_xp();
+}
+
+int Entity::change_health(float value){
+    this->Status.change_health(value);
+    return 1;
+}
+int Entity::change_max_health(float value){
+    this->Status.change_max_health(value);
+    return 1;
+}
+int Entity::change_xp(float value){
+    this->Status.change_xp(value);
+    return 1;
+}
+
+
+
+int Entity::get_id(){
+    return this->id;
+}
+
 float Entity::get_pos_x(){
     return this->pos_x;
 }
