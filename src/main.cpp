@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include <App.hpp>
-#include <KeyState.hpp>
-#include <Player.hpp>
-#include <GameSettings.hpp>
+#include "App.hpp"
+#include "KeyState.hpp"
+#include "Player.hpp"
+#include "GameSettings.hpp"
 
 #include <SDL.h>
 
