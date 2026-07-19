@@ -21,7 +21,7 @@ ${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o ${BUILD}/Pl
 ${BUILD}/main.o: ${SRC}/main.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/main.cpp -o ${BUILD}/main.o ${SDL}
 ${BUILD}/App.o: ${SRC}/App.cpp
-	${CC} -c -I${INCLUDE} ${SRC}/App.cpp -o ${BUILD}/App.o
+	${CC} -c -I${INCLUDE} ${SRC}/App.cpp -o ${BUILD}/App.o ${SDL}
 ${BUILD}/KeyState.o: ${SRC}/KeyState.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/KeyState.cpp -o ${BUILD}/KeyState.o
 ${BUILD}/Player.o: ${SRC}/Player.cpp

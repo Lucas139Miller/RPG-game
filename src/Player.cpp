@@ -21,6 +21,11 @@ float Player::get_xp(){
     return this->xp;
 }
 
+int Player::change_name(std::string value){
+    this->name = value;
+    return 1;
+}
+
 int Player::change_health(float value){
     this->health = value;
     return 1;

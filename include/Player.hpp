@@ -13,6 +13,7 @@ public:
     float get_max_health();
     float get_xp();
 
+    int change_name(std::string value);
     int change_health(float value);
     int change_max_health(float value);
     int change_xp(float value);
