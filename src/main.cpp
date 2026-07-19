@@ -2,6 +2,8 @@
 
 #include <App.hpp>
 #include <KeyState.hpp>
+#include <Player.hpp>
+#include <GameSettings.hpp>
 
 #include <SDL.h>
 
@@ -13,6 +15,8 @@ int main(int argc, char** args) {
 
     App App;
     KeyState keyState;
+    Player Player;
+    GameSettings Settings;
 
 	// Pointers to our window and surface
 	SDL_Surface* winSurface = NULL;

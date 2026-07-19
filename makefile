@@ -14,7 +14,7 @@ SDL = `pkg-config --cflags --libs sdl2`
 all: setup ${BIN}/${TARGET}
 
 #LINKING
-${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o
+${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o ${BUILD}/Player.o ${BUILD}/GameSettings.o
 	${CC} ${BUILD}/*.o -o ${BIN}/${TARGET} ${SDL}
 
 #COMPILING
@@ -24,6 +24,12 @@ ${BUILD}/App.o: ${SRC}/App.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/App.cpp -o ${BUILD}/App.o
 ${BUILD}/KeyState.o: ${SRC}/KeyState.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/KeyState.cpp -o ${BUILD}/KeyState.o
+${BUILD}/Player.o: ${SRC}/Player.cpp
+	${CC} -c -I${INCLUDE} ${SRC}/Player.cpp -o ${BUILD}/Player.o
+${BUILD}/GameSettings.o: ${SRC}/GameSettings.cpp
+	${CC} -c -I${INCLUDE} ${SRC}/GameSettings.cpp -o ${BUILD}/GameSettings.o
+
+
 
 #PRE CONFIGURATION
 setup:
