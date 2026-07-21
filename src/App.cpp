@@ -1,3 +1,5 @@
+#include <string>
+
 #include "App.hpp"
 #include "KeyState.hpp"
 #include "Player.hpp"
@@ -7,10 +9,17 @@
 App::App(): winSurface(NULL), window(NULL){
     std::cout << "App constructor!\n";
 }
-int App::initialize(){
+int App::initialize(std::string window_name, int window_x, int window_y){
 // Initialize SDL. SDL_Init will return -1 if it fails.
 	if ( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) {
 		std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
+		// End the program
+		return 1;
+	}
+
+	window = SDL_CreateWindow( window_name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_x, window_y, SDL_WINDOW_SHOWN );
+	if ( !window ) {
+		std::cout << "Error creating window: " << SDL_GetError()  << std::endl;
 		// End the program
 		return 1;
 	}
@@ -18,21 +27,8 @@ int App::initialize(){
 }
 
 int App::Run(){
-	// Create our window
-	window = SDL_CreateWindow( "RPG game -.-", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN );
-
-	// Make sure creating the window succeeded
-	if ( !window ) {
-		std::cout << "Error creating window: " << SDL_GetError()  << std::endl;
-
-		// End the program
-		return 1;
-	}
-
-	// Get the surface from the window
 	winSurface = SDL_GetWindowSurface( window );
 
-	// Make sure getting the surface succeeded
 	if ( !winSurface ) {
 		std::cout << "Error getting surface: " << SDL_GetError() << std::endl;
 		// End the program
@@ -83,15 +79,10 @@ int App::Run(){
         // Update the window display
         SDL_UpdateWindowSurface( window );
 
-
-        // Wait before next frame
-        SDL_Delay(10);
+        SDL_Delay(16.67);
     }
 
-
-	// Destroy the window. This will also destroy the surface
 	SDL_DestroyWindow( window );
-
 	// Quit SDL
 	SDL_Quit();
 	return 1;

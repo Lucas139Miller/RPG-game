@@ -8,8 +8,6 @@ private:
 	SDL_Window* window;
 public:
     App();
-    int initialize();
+    int initialize(std::string window_name, int window_x, int window_y);
     int Run();
 };
-
-

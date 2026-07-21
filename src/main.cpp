@@ -7,7 +7,7 @@ int main(int argc, char** args) {
 
     App App;
 
-    if(!App.initialize()){
+    if(!App.initialize("My game", 1280, 720)){
         App.Run();
     }
 
