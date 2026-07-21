@@ -32,6 +32,8 @@ ${BUILD}/Entity.o: ${SRC}/Entity.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/Entity.cpp -o ${BUILD}/Entity.o
 ${BUILD}/EntityStatus.o: ${SRC}/EntityStatus.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/EntityStatus.cpp -o ${BUILD}/EntityStatus.o
+#${BUILD}/Scene.o: ${SRC}/Scene.cpp
+#	${CC} -c -I${INCLUDE} ${SRC}/Scene.cpp -o ${BUILD}/Scene.o
 
 
 #PRE CONFIGURATION
