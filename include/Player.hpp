@@ -8,7 +8,6 @@
 class Player: public Entity{
 private:
     EntityStatus entityStatus;
-
 public:
     Player();
 };

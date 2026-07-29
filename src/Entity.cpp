@@ -1,7 +1,12 @@
 #include "Entity.hpp"
 
+
 Entity::Entity(){
-std::cout << "Entituy created!" << std::endl;
+    this->name = "";
+    this->on_ground = false;
+    this->pos_x = 0;
+    this->pos_y = 0;
+    std::cout << "Entituy created!" << std::endl;
 }
 
 //IDENTIFICATION**********************************

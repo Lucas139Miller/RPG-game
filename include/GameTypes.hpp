@@ -13,7 +13,11 @@ enum class GameState : unsigned char{
         IntroCutscene                       //initial cutscene that cannot be paused
 };
 
-struct Position{
+struct Coordinates{
+    float x;
+    float y;
+};
+struct Rectangle{
     float x;
     float y;
 };

@@ -1,9 +1,13 @@
 #include <iostream>
 #include <array>
+#include "GameTypes.hpp"
+
+#pragma once
+
 class Collider{
 private:
 
 public:
-    Coord position;
-
+    Coordinates position;
+    Rectangle box;
 };

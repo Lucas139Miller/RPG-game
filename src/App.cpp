@@ -13,6 +13,7 @@
 App::App(): winSurface(NULL), window(NULL){
     std::cout << "App constructor!\n";
 }
+
 int App::initialize(std::string window_name, int window_x, int window_y){
 // Initialize SDL. SDL_Init will return -1 if it fails.
 	if ( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) {
@@ -43,11 +44,17 @@ int App::Run(){
 	SDL_Event ev;
     bool running = true;
 
+    Player player;
     int x,y,w,h;
     x= 10;
     y= 10;
     w = 100;
     h = 255;
+
+    player.collider.box.x = w;
+    player.collider.box.y = h;
+    player.pos_x = x+ player.collider.box.x;
+    player.pos_y = y+ player.collider.box.y;
 
 	//RUNNIG LOOP **************************************************************
     while(running){
@@ -61,25 +68,49 @@ int App::Run(){
                 case SDL_KEYDOWN:
                     switch(ev.key.keysym.sym){
                         case SDLK_a:
-                            x-=10;
+                            player.pos_x-=10;
                             break;
                         case SDLK_d:
-                            x+=10;
+                            player.pos_x+=10;
                             break;
                     }
                 break;
             }
         }
 
-        // Fill the window with a white rectangle
+
+        //SCENARIO*****************************************************************
+
+        //visual hitbox
+        player.collider.position.x = player.pos_x - player.collider.box.x;
+        player.collider.position.y = player.pos_y - player.collider.box.y;
+
+        //Background
         SDL_FillRect( winSurface, NULL, SDL_MapRGB( winSurface->format, 255, 255, 255 ) );
 
+        //Ground
+        SDL_Rect recg;
+        recg.x = 0;
+        recg.y = 680;
+        recg.w = 1280;
+        recg.h = 30;
+        SDL_FillRect( winSurface, &recg, SDL_MapRGB( winSurface->format, 0,0,0));
+
+        //Player box
         SDL_Rect rec;
-        rec.x = x;
-        rec.y = y;
-        rec.w = w;
-        rec.h = h;
+        rec.x = player.pos_x;
+        rec.y = player.pos_y;
+        rec.w = player.collider.box.x;
+        rec.h = player.collider.box.y;
         SDL_FillRect( winSurface, &rec, SDL_MapRGB( winSurface->format, 0,255,0));
+
+        if(player.pos_y<= 680- player.collider.box.y){
+            player.pos_y+=10;
+        }
+        if(player.pos_y > 680- player.collider.box.y){
+            player.pos_y = 680- player.collider.box.y;
+        }
+
         // Update the window display
         SDL_UpdateWindowSurface( window );
 
