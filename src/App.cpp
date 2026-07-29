@@ -5,6 +5,10 @@
 #include "Player.hpp"
 #include "GameSettings.hpp"
 
+/*************************
+ * Don't forget to use Scene class
+ * for controling the game
+ * **********************/
 
 App::App(): winSurface(NULL), window(NULL){
     std::cout << "App constructor!\n";

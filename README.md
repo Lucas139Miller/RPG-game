@@ -1,5 +1,7 @@
 My new brand RPG game
 
+This game is being designed for low devices, and actually I'm making it on Linux, so probabilly with good compatibility too!
+
 I will think in a name for this
 
 some specifications:
