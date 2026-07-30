@@ -7,5 +7,5 @@ private:
 public:
     KeyState();
     bool check(std::string key);
-    int change(std::string key, int value);
+    int change(std::string key, bool value);
 };

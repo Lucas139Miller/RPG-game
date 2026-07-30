@@ -41,6 +41,7 @@ int App::Run(){
 		return 1;
 	}
 
+	KeyState keyState;
 
 	SDL_Event ev;
     bool running = true;
@@ -71,18 +72,43 @@ int App::Run(){
                 case SDL_KEYDOWN:
                     switch(ev.key.keysym.sym){
                         case SDLK_a:
-                            player.pos_x-=10;
+                            keyState.change("a", true);
                             break;
                         case SDLK_d:
-                            player.pos_x+=10;
+                            keyState.change("d", true);
                             break;
                         case SDLK_w:
-                            player.on_ground = false;
-                            player.vel_y-=30;
+                            keyState.change("w", true);
+                        break;
+                    }
+                break;
+                case SDL_KEYUP:
+                    switch(ev.key.keysym.sym){
+                        case SDLK_a:
+                            keyState.change("a", false);
+                            break;
+                        case SDLK_d:
+                            keyState.change("d", false);
+                            break;
+                        case SDLK_w:
+                            keyState.change("w", false);
                         break;
                     }
                 break;
             }
+        }
+
+        //KEYSTATE CHECK
+
+        if(keyState.check("a")){
+            player.pos_x-=10;
+        }else if(keyState.check("d")){
+            player.pos_x+=10;
+        }
+        //temporary conditional
+        if(keyState.check("w") && player.vel_y >= 0){
+            player.on_ground = false;
+            player.vel_y-=30;
         }
 
 

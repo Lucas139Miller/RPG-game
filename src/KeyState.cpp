@@ -23,7 +23,7 @@ bool KeyState::check(std::string key){
     std::cout << "Tecla não encontrada!\n";
     return false;
 }
-int KeyState::change(std::string key, int value){
+int KeyState::change(std::string key, bool value){
     if(key != "a" && key != "s" && key != "d" && key != "w" && key != "space"){
         std::cout << "Tecla não encontrada!\n";
         return 0;
