@@ -1,6 +1,8 @@
 #include <iostream>
 #pragma once
 
+extern float gvt;
+
 enum class GameState : unsigned char{
         Uninitialized,                      //unitial state
         Boot,                               //screen before start the game
@@ -21,3 +23,4 @@ struct Rectangle{
     float x;
     float y;
 };
+

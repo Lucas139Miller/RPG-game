@@ -4,6 +4,7 @@
 #include "KeyState.hpp"
 #include "Player.hpp"
 #include "GameSettings.hpp"
+#include "GameTypes.hpp"
 
 /*************************
  * Don't forget to use Scene class
@@ -56,6 +57,8 @@ int App::Run(){
     player.pos_x = x+ player.collider.box.x;
     player.pos_y = y+ player.collider.box.y;
 
+    this->gameSettings.set_current_state(GameState::Active);
+
 	//RUNNIG LOOP **************************************************************
     while(running){
         // Event loop **************************************************************
@@ -73,20 +76,49 @@ int App::Run(){
                         case SDLK_d:
                             player.pos_x+=10;
                             break;
+                        case SDLK_w:
+                            player.on_ground = false;
+                            player.vel_y-=30;
+                        break;
                     }
                 break;
             }
         }
 
 
-        //SCENARIO*****************************************************************
-
-        //visual hitbox
-        player.collider.position.x = player.pos_x - player.collider.box.x;
-        player.collider.position.y = player.pos_y - player.collider.box.y;
 
         //Background
         SDL_FillRect( winSurface, NULL, SDL_MapRGB( winSurface->format, 255, 255, 255 ) );
+
+
+        //Player box
+        SDL_Rect rec;
+
+        //SCENARIO*****************************************************************
+        //this->gameSettings.get_current_state();
+        if(this->gameSettings.get_current_state() == GameState::Active){
+            std::cout << "DENTRO\n";
+            std::cout << "x: " << player.pos_x << "\ny: " << player.pos_y
+            << std::endl;
+            //visual hitbox
+            player.collider.position.x = player.pos_x - player.collider.box.x;
+            player.collider.position.y = player.pos_y - player.collider.box.y;
+
+            //Player box
+            rec.x = player.pos_x;
+            rec.y = player.pos_y;
+            rec.w = player.collider.box.x;
+            rec.h = player.collider.box.y;
+            SDL_FillRect( winSurface, &rec, SDL_MapRGB( winSurface->format, 0,255,0));
+
+            if(player.pos_y<= 680- player.collider.box.y){
+                player.on_ground = true;
+            }
+            if(player.pos_y > 680- player.collider.box.y){
+                player.on_ground = false;
+                player.pos_y = 680- player.collider.box.y;
+            }
+        }
 
         //Ground
         SDL_Rect recg;
@@ -96,24 +128,10 @@ int App::Run(){
         recg.h = 30;
         SDL_FillRect( winSurface, &recg, SDL_MapRGB( winSurface->format, 0,0,0));
 
-        //Player box
-        SDL_Rect rec;
-        rec.x = player.pos_x;
-        rec.y = player.pos_y;
-        rec.w = player.collider.box.x;
-        rec.h = player.collider.box.y;
-        SDL_FillRect( winSurface, &rec, SDL_MapRGB( winSurface->format, 0,255,0));
-
-        if(player.pos_y<= 680- player.collider.box.y){
-            player.pos_y+=10;
-        }
-        if(player.pos_y > 680- player.collider.box.y){
-            player.pos_y = 680- player.collider.box.y;
-        }
+        player.update();
 
         // Update the window display
         SDL_UpdateWindowSurface( window );
-
         SDL_Delay(16.67);
     }
 

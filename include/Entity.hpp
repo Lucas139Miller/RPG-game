@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Collider.hpp"
+#include "GameTypes.hpp"
+
 #pragma once
 
 class Entity{
@@ -13,5 +15,6 @@ public:
     float on_ground;
 
     Entity();
+    int update();
     std::string get_id();
 };

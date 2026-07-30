@@ -14,7 +14,7 @@ SDL = `pkg-config --cflags --libs sdl2`
 all: setup ${BIN}/${TARGET}
 
 #LINKING
-${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o ${BUILD}/Player.o ${BUILD}/GameSettings.o ${BUILD}/Entity.o ${BUILD}/EntityStatus.o
+${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o ${BUILD}/Player.o ${BUILD}/GameSettings.o ${BUILD}/Entity.o ${BUILD}/EntityStatus.o ${BUILD}/GameTypes.o
 	${CC} ${BUILD}/*.o -o ${BIN}/${TARGET} ${SDL}
 
 #COMPILING
@@ -32,7 +32,8 @@ ${BUILD}/Entity.o: ${SRC}/Entity.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/Entity.cpp -o ${BUILD}/Entity.o
 ${BUILD}/EntityStatus.o: ${SRC}/EntityStatus.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/EntityStatus.cpp -o ${BUILD}/EntityStatus.o
-
+${BUILD}/GameTypes.o: ${SRC}/GameTypes.cpp
+	${CC} -c -I${INCLUDE} ${SRC}/GameTypes.cpp -o ${BUILD}/GameTypes.o
 
 #${BUILD}/Collider.o: ${SRC}/Collider.cpp
 #	${CC} -c -I${INCLUDE} ${SRC}/Collider.cpp -o ${BUILD}/Collider.o
@@ -48,3 +49,6 @@ setup:
 run:
 	${BIN}/${TARGET}
 	cd ../
+
+clear:
+	rm -f build/*.o

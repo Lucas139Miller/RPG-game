@@ -8,3 +8,8 @@ some specifications:
 
 - it uses SDL 2.30.0
 - SDL library was compiled as global when in development, then it does not contains SDL instaled
+
+
+Makefile:
+
+- use **make** for compiling and **make run** for running the game
