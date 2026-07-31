@@ -1,13 +1,12 @@
 #include <iostream>
 #include "Entity.hpp"
-#include "EntityStatus.hpp"
+#include "LivingEntity.hpp"
 #include "GameTypes.hpp"
 
 #pragma once
 
-class Player: public Entity{
+class Player: public LivingEntity{
 private:
-    EntityStatus entityStatus;
 public:
     Player();
 };

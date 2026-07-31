@@ -14,7 +14,7 @@ SDL = `pkg-config --cflags --libs sdl2`
 all: setup ${BIN}/${TARGET}
 
 #LINKING
-${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o ${BUILD}/Player.o ${BUILD}/GameSettings.o ${BUILD}/Entity.o ${BUILD}/EntityStatus.o ${BUILD}/GameTypes.o
+${BIN}/${TARGET}: ${BUILD}/main.o ${BUILD}/App.o ${BUILD}/KeyState.o ${BUILD}/Player.o ${BUILD}/GameSettings.o ${BUILD}/Entity.o ${BUILD}/LivingEntity.o ${BUILD}/GameTypes.o
 	${CC} ${BUILD}/*.o -o ${BIN}/${TARGET} ${SDL}
 
 #COMPILING
@@ -30,8 +30,8 @@ ${BUILD}/GameSettings.o: ${SRC}/GameSettings.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/GameSettings.cpp -o ${BUILD}/GameSettings.o
 ${BUILD}/Entity.o: ${SRC}/Entity.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/Entity.cpp -o ${BUILD}/Entity.o
-${BUILD}/EntityStatus.o: ${SRC}/EntityStatus.cpp
-	${CC} -c -I${INCLUDE} ${SRC}/EntityStatus.cpp -o ${BUILD}/EntityStatus.o
+${BUILD}/LivingEntity.o: ${SRC}/LivingEntity.cpp
+	${CC} -c -I${INCLUDE} ${SRC}/LivingEntity.cpp -o ${BUILD}/LivingEntity.o
 ${BUILD}/GameTypes.o: ${SRC}/GameTypes.cpp
 	${CC} -c -I${INCLUDE} ${SRC}/GameTypes.cpp -o ${BUILD}/GameTypes.o
 

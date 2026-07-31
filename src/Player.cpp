@@ -1,7 +1,7 @@
 #include "Player.hpp"
 
 Player::Player(){
-    this->entityStatus.health = 0;
-    this->entityStatus.max_health = 0;
-    this->entityStatus.xp = 0;
+    this->health = 0;
+    this->max_health = 0;
+    this->xp = 0;
 }
