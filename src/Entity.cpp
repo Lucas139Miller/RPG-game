@@ -20,13 +20,13 @@ std::string Entity::get_id(){
 }
 
 int Entity::update(){
-    if(this-> on_ground){
+    if(!(this->on_ground)){
         this->ac_y = gvt;
         std::cout << "No ar!\n";
         //std::cout << gvt << std::endl;
     }else{
         this->ac_y = 0;
-        this->vel_y = 0;
+        //this->vel_y = 0;
         std::cout << "No chão!\n";
     }
     this->vel_y +=this->ac_y;

@@ -13,4 +13,4 @@ some specifications:
 Makefile:
 
 - use **make** for compiling and **make run** for running the game
--use **make clear** if you want for killing objects that were before built
+- use **make clear** if you want for killing objects that were before built

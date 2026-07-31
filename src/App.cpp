@@ -106,7 +106,7 @@ int App::Run(){
             player.pos_x+=10;
         }
         //temporary conditional
-        if(keyState.check("w") && player.vel_y >= 0){
+        if(keyState.check("w") && player.on_ground){
             player.on_ground = false;
             player.vel_y-=30;
         }
@@ -123,6 +123,9 @@ int App::Run(){
         //SCENARIO*****************************************************************
         //this->gameSettings.get_current_state();
         if(this->gameSettings.get_current_state() == GameState::Active){
+
+            player.update();
+
             std::cout << "DENTRO\n";
             std::cout << "x: " << player.pos_x << "\ny: " << player.pos_y
             << std::endl;
@@ -137,11 +140,12 @@ int App::Run(){
             rec.h = player.collider.box.y;
             SDL_FillRect( winSurface, &rec, SDL_MapRGB( winSurface->format, 0,255,0));
 
-            if(player.pos_y<= 680- player.collider.box.y){
-                player.on_ground = true;
-            }
-            if(player.pos_y > 680- player.collider.box.y){
+            if(player.pos_y< 680- player.collider.box.y){
                 player.on_ground = false;
+            }
+            if(player.pos_y >= 680- player.collider.box.y){
+                player.on_ground = true;
+                player.vel_y=0;
                 player.pos_y = 680- player.collider.box.y;
             }
         }
@@ -154,7 +158,6 @@ int App::Run(){
         recg.h = 30;
         SDL_FillRect( winSurface, &recg, SDL_MapRGB( winSurface->format, 0,0,0));
 
-        player.update();
 
         // Update the window display
         SDL_UpdateWindowSurface( window );
