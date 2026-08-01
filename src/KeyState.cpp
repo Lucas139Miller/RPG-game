@@ -5,6 +5,8 @@ KeyState::KeyState(){
     this->s = false;
     this->d = false;
     this->w = false;
+    this->q = false;
+    this->e = false;
     this->space = false;
 };
 bool KeyState::check(std::string key){
@@ -16,6 +18,10 @@ bool KeyState::check(std::string key){
         return this->d;
     }else if(key == "w"){
         return this->w;
+    }else if(key == "q"){
+        return this->q;
+    }else if(key == "e"){
+        return this->e;
     }else if(key == "space"){
         return this->space;
     }
@@ -24,7 +30,7 @@ bool KeyState::check(std::string key){
     return false;
 }
 int KeyState::change(std::string key, bool value){
-    if(key != "a" && key != "s" && key != "d" && key != "w" && key != "space"){
+    if(key != "a" && key != "s" && key != "d" && key != "w" && key != "q" && key != "e" && key != "space"){
         std::cout << "Tecla não encontrada!\n";
         return 0;
     }
@@ -36,6 +42,10 @@ int KeyState::change(std::string key, bool value){
         this->d= value;
     }else if(key == "w"){
         this->w= value;
+    }else if(key == "q"){
+        this->q= value;
+    }else if(key == "e"){
+        this->e= value;
     }else if(key == "space"){
         this->space= value;
     }

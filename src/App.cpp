@@ -79,6 +79,12 @@ int App::Run(){
                             break;
                         case SDLK_w:
                             keyState.change("w", true);
+                            break;
+                        case SDLK_q:
+                            keyState.change("q", true);
+                            break;
+                        case SDLK_e:
+                            keyState.change("e", true);
                         break;
                     }
                 break;
@@ -93,6 +99,12 @@ int App::Run(){
                         case SDLK_w:
                             keyState.change("w", false);
                         break;
+                        case SDLK_q:
+                            keyState.change("q", false);
+                            break;
+                        case SDLK_e:
+                            keyState.change("e", false);
+                        break;
                     }
                 break;
             }
@@ -101,9 +113,18 @@ int App::Run(){
         //KEYSTATE CHECK
 
         if(keyState.check("a")){
+            player.direction = "left";
             player.pos_x-=10;
         }else if(keyState.check("d")){
+            player.direction = "right";
             player.pos_x+=10;
+        }
+        if(keyState.check("q")){
+            if(player.direction == "left"){
+                player.pos_x-=30;
+            }else{
+                player.pos_x+=30;
+            }
         }
         //temporary conditional
         if(keyState.check("w") && player.on_ground){

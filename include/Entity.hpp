@@ -10,9 +10,10 @@ private:
 public:
     Collider collider;
     std::string name;
+    std::string direction;
     float pos_x, pos_y, vel_x, vel_y,
     ac_x, ac_y;
-    float on_ground;
+    bool on_ground;
 
     Entity();
     int update();

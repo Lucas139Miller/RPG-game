@@ -3,7 +3,7 @@
 
 class KeyState{
 private:
-    bool a,s,d,w,space;
+    bool a,s,d,w,q,e,space;
 public:
     KeyState();
     bool check(std::string key);
