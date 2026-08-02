@@ -1,7 +1,7 @@
 #include "Entity.hpp"
 
 
-Entity::Entity(){
+Entity::~Entity(){
     /*this->state = PlayerState::idle;
     std::cout << "IDLE\n";*/
     this->name = "";
@@ -35,23 +35,7 @@ int Entity::update(){
     this->vel_y +=this->ac_y;
     this->pos_y+=this->vel_y;
 
-    //STATES
-    /*if(this->on_ground){
-        if(this->vel_x =0){
-            this->state = PlayerState::idle;
-            std::cout << "IDLE\n";
-        }else{
-            this->state = PlayerState::walking;
-            std::cout << "WALKING\n";
-        }
-    }else{//not on ground
-        if(this->vel_y < 0){
-            this->state = PlayerState::falling;
-            std::cout << "FALLING\n";
-        }else{
-            this->state = PlayerState::jumping;
-            std::cout << "JUMPING\n";
-        }
-    }*/
+    std::cout << "Vel X: " << this->vel_x << std::endl;
+    this->change_state();
     return 1;
 }

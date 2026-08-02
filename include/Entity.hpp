@@ -15,7 +15,8 @@ public:
     ac_x, ac_y;
     bool on_ground;
 
-    Entity();
+    virtual ~Entity();
+    virtual int change_state() = 0;
     int update();
     std::string get_id();
 };

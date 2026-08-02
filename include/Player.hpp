@@ -21,4 +21,6 @@ public:
 
     PlayerState state;
     Player();
+
+    int change_state() override;
 };
