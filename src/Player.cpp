@@ -21,12 +21,12 @@ int Player::change_state(){
         }
     }else{//not on ground
         if(this->vel_y < 0){
-            this->state = PlayerState::falling;
-            std::cout << "FALLING\n";
-            return 1;
-        }else{
             this->state = PlayerState::jumping;
             std::cout << "JUMPING\n";
+            return 1;
+        }else{
+            this->state = PlayerState::falling;
+            std::cout << "FALLING\n";
             return 1;
         }
     }

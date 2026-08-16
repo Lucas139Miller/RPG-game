@@ -114,16 +114,21 @@ int App::Run(){
 
         if(keyState.check("a")){
             player.direction = "left";
-            player.pos_x-=10;
+            player.vel_x=-20;
         }else if(keyState.check("d")){
             player.direction = "right";
-            player.pos_x+=10;
+            player.vel_x=20;
         }
+
+        if(!keyState.check("a") && !keyState.check("d")){
+            player.vel_x=0;
+        }
+
         if(keyState.check("q")){
             if(player.direction == "left"){
-                player.pos_x-=30;
+                player.vel_x-=30;
             }else{
-                player.pos_x+=30;
+                player.vel_x+=30;
             }
         }
         //temporary conditional

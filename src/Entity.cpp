@@ -13,7 +13,7 @@ Entity::~Entity(){
     this->vel_y = 0;
     this->ac_x = 0;
     this->ac_y = 0;
-    std::cout << "Entituy created!" << std::endl;
+    std::cout << "Entity created!" << std::endl;
 }
 
 //IDENTIFICATION**********************************
@@ -32,8 +32,11 @@ int Entity::update(){
         //this->vel_y = 0;
         std::cout << "No chão!\n";
     }
+
+    this->pos_x+=this->vel_x;
     this->vel_y +=this->ac_y;
     this->pos_y+=this->vel_y;
+
 
     std::cout << "Vel X: " << this->vel_x << std::endl;
     this->change_state();
