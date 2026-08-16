@@ -1,10 +1,18 @@
 #include "Player.hpp"
 
 Player::Player(){
+    this->abilities.can_jump = true;
+    this->abilities.max_jumps = 2;
+    this->abilities.jump_boost = 1.0;
+    this->abilities.air_jump_boost = 1.0;
+    this->dynamicStates.has_jumped = false;
     this->state = PlayerState::idle;
     this->health = 0;
     this->max_health = 0;
     this->xp = 0;
+
+
+    //this->dynamicStates.last_jump = false;
 }
 
 int Player::change_state(){

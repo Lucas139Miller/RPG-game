@@ -98,6 +98,9 @@ int App::Run(){
                             break;
                         case SDLK_w:
                             keyState.change("w", false);
+                            if(player.dynamicStates.has_jumped){
+                                player.dynamicStates.has_jumped = false;
+                            }
                         break;
                         case SDLK_q:
                             keyState.change("q", false);
@@ -131,10 +134,21 @@ int App::Run(){
                 player.vel_x+=30;
             }
         }
-        //temporary conditional
-        if(keyState.check("w") && player.on_ground){
-            player.on_ground = false;
-            player.vel_y-=30;
+        //JUMP CONDITINALS ******************************************************
+        if(keyState.check("w") && player.abilities.can_jump
+            && player.dynamicStates.available_jumps
+            && !player.dynamicStates.has_jumped){
+
+            if(player.on_ground){
+                player.on_ground = false;
+                player.vel_y-=30*player.abilities.jump_boost;
+            }else{
+                std::cout << "Pular no ar\n";
+                player.ac_y = 0;
+                player.vel_y=-30*player.abilities.air_jump_boost;
+            }
+            player.dynamicStates.available_jumps--;
+            player.dynamicStates.has_jumped = true;
         }
 
 
@@ -152,9 +166,9 @@ int App::Run(){
 
             player.update();
 
-            std::cout << "DENTRO\n";
-            std::cout << "x: " << player.pos_x << "\ny: " << player.pos_y
-            << std::endl;
+            //std::cout << "DENTRO\n";
+            /*std::cout << "x: " << player.pos_x << "\ny: " << player.pos_y
+            << std::endl;*/
             //visual hitbox
             player.collider.position.x = player.pos_x - player.collider.box.x;
             player.collider.position.y = player.pos_y - player.collider.box.y;
