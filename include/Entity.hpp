@@ -9,14 +9,14 @@ private:
     std::string id;
 public:
     struct Abilities{
-        bool can_jump;
-        int max_jumps;
-        float jump_boost;
-        float air_jump_boost;
+        bool can_jump;          //is entity able to jump?
+        int max_jumps;          //number of jumps entity is able to do
+        float jump_boost;       //multiplier of jump height entity from ground
+        float air_jump_boost;   //multiplier of jump height entity from air
     };
     struct DynamicStates{
-        int available_jumps;
-        bool has_jumped;
+        int available_jumps;    //number of remaining jumps
+        bool has_jumped;        //storage if it initializated the jump and stopped the action
         //bool last_jump;
     };
 
