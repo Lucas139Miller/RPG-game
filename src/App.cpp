@@ -55,8 +55,8 @@ int App::Run(){
 
     player.collider.box.x = w;
     player.collider.box.y = h;
-    player.pos_x = x+ player.collider.box.x;
-    player.pos_y = y+ player.collider.box.y;
+    player.transform.position.x = x+ player.collider.box.x;
+    player.transform.position.y = y+ player.collider.box.y;
 
     this->gameSettings.set_current_state(GameState::Active);
 
@@ -170,23 +170,23 @@ int App::Run(){
             /*std::cout << "x: " << player.pos_x << "\ny: " << player.pos_y
             << std::endl;*/
             //visual hitbox
-            player.collider.position.x = player.pos_x - player.collider.box.x;
-            player.collider.position.y = player.pos_y - player.collider.box.y;
+            player.collider.position.x = player.transform.position.x - player.collider.box.x;
+            player.collider.position.y = player.transform.position.y - player.collider.box.y;
 
             //Player box
-            rec.x = player.pos_x;
-            rec.y = player.pos_y;
+            rec.x = player.transform.position.x;
+            rec.y = player.transform.position.y;
             rec.w = player.collider.box.x;
             rec.h = player.collider.box.y;
             SDL_FillRect( winSurface, &rec, SDL_MapRGB( winSurface->format, 0,255,0));
 
-            if(player.pos_y< 680- player.collider.box.y){
+            if(player.transform.position.y< 680- player.collider.box.y){
                 player.on_ground = false;
             }
-            if(player.pos_y >= 680- player.collider.box.y){
+            if(player.transform.position.y >= 680- player.collider.box.y){
                 player.on_ground = true;
                 player.vel_y=0;
-                player.pos_y = 680- player.collider.box.y;
+                player.transform.position.y = 680- player.collider.box.y;
             }
         }
 

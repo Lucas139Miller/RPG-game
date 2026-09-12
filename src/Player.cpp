@@ -2,7 +2,7 @@
 
 Player::Player(){
     this->abilities.can_jump = true;
-    this->abilities.max_jumps = 2;
+    this->abilities.max_jumps = 4;
     this->abilities.jump_boost = 1.0;
     this->abilities.air_jump_boost = 1.0;
     this->dynamicStates.has_jumped = false;

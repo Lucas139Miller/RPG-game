@@ -19,18 +19,25 @@ public:
         bool has_jumped;        //storage if it initializated the jump and stopped the action
         //bool last_jump;
     };
+    struct Transform{           //responsible for global movimentation, size and rotation
+        Coordinates position;
+        float rotation, size;
+        bool reflected;
+    };
 
     Collider collider;
     Abilities abilities;
     DynamicStates dynamicStates;
+    Transform transform;
 
     std::string name;
     std::string direction;
-    float pos_x, pos_y, vel_x, vel_y,
+    float vel_x, vel_y,
     ac_x, ac_y;
     bool on_ground;
 
-    virtual ~Entity();
+    Entity();
+    virtual ~Entity() = default;
     virtual int change_state() = 0;
     int update();
     std::string get_id();

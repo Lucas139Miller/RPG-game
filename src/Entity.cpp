@@ -1,14 +1,14 @@
 #include "Entity.hpp"
 
 
-Entity::~Entity(){
+Entity::Entity(){
     /*this->state = PlayerState::idle;
     std::cout << "IDLE\n";*/
     this->name = "";
     this->on_ground = false;
     this->direction = "right";
-    this->pos_x = 0;
-    this->pos_y = 0;
+    this->transform.position.x = 0;
+    this->transform.position.y = 0;
     this->vel_x = 0;
     this->vel_y = 0;
     this->ac_x = 0;
@@ -46,9 +46,9 @@ int Entity::update(){
     "Novo: " << this->dynamicStates.last_jump  << "\n";
 */
 
-    this->pos_x+=this->vel_x;
+    this->transform.position.x+=this->vel_x;
     this->vel_y +=this->ac_y;
-    this->pos_y+=this->vel_y;
+    this->transform.position.y+=this->vel_y;
 
     std::cout << "Pulos restantes: " << this-> dynamicStates.available_jumps << "\n";
     std::cout << "Pulou : " << this-> dynamicStates.has_jumped << "\n";
@@ -59,3 +59,8 @@ int Entity::update(){
     this->change_state();
     return 1;
 }
+/*
+Entity::~Entity(){
+
+}
+*/

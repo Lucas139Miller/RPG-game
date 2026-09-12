@@ -23,4 +23,3 @@ struct Rectangle{
     float x;
     float y;
 };
-
