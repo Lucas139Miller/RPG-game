@@ -116,10 +116,10 @@ int App::Run(){
         //KEYSTATE CHECK
 
         if(keyState.check("a")){
-            player.direction = "left";
+            player.transform.reflected = true;
             player.physics.velocity.x=-20;
         }else if(keyState.check("d")){
-            player.direction = "right";
+            player.transform.reflected = false;
             player.physics.velocity.x=20;
         }
 
@@ -128,7 +128,7 @@ int App::Run(){
         }
 
         if(keyState.check("q")){
-            if(player.direction == "left"){
+            if(player.transform.reflected){
                 player.physics.velocity.x-=30;
             }else{
                 player.physics.velocity.x+=30;

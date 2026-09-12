@@ -23,10 +23,14 @@ public:
         Vector2F position;
         float rotation, size;
         bool reflected;
+
+        Transform();
     };
     struct PhysicsBody{         //responsible for storage all physics attributes about the body
         Vector2F velocity, aceleration;
         bool on_ground;
+
+        PhysicsBody();
     };
 
     Collider collider;
@@ -36,7 +40,6 @@ public:
     PhysicsBody physics;
 
     std::string name;
-    std::string direction;
 
     Entity();
     virtual ~Entity() = default;

@@ -2,21 +2,23 @@
 
 
 Entity::Entity(){
-    /*this->state = PlayerState::idle;
-    std::cout << "IDLE\n";*/
     this->name = "";
-    this->physics.on_ground = false;
-    this->direction = "right";
-    this->transform.position.x = 0;
-    this->transform.position.y = 0;
-    this->physics.velocity.x = 0;
-    this->physics.velocity.y = 0;
-    this->physics.aceleration.y = 0;
-    this->physics.aceleration.y = 0;
     std::cout << "Entity created!" << std::endl;
 }
 
 //IDENTIFICATION**********************************
+
+Entity::Transform::Transform(){
+    this->position = {0,0};
+    this->rotation = 0;
+    this->size = 0;
+    this->reflected = false;
+}
+Entity::PhysicsBody::PhysicsBody(){
+    this->aceleration = {0,0};
+    this->velocity = {0,0};
+    this->on_ground = false;
+}
 
 std::string Entity::get_id(){
     return this->id;
