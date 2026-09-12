@@ -20,21 +20,23 @@ public:
         //bool last_jump;
     };
     struct Transform{           //responsible for global movimentation, size and rotation
-        Coordinates position;
+        Vector2F position;
         float rotation, size;
         bool reflected;
+    };
+    struct PhysicsBody{         //responsible for storage all physics attributes about the body
+        Vector2F velocity, aceleration;
+        bool on_ground;
     };
 
     Collider collider;
     Abilities abilities;
     DynamicStates dynamicStates;
     Transform transform;
+    PhysicsBody physics;
 
     std::string name;
     std::string direction;
-    float vel_x, vel_y,
-    ac_x, ac_y;
-    bool on_ground;
 
     Entity();
     virtual ~Entity() = default;

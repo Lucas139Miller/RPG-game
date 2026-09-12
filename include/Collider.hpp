@@ -10,7 +10,7 @@ public:
 
     Collider();
     std::string color;
-    Coordinates position;
+    Vector2F position;
     bool moveable;
     Rectangle box;
     //Collision collision;

@@ -117,21 +117,21 @@ int App::Run(){
 
         if(keyState.check("a")){
             player.direction = "left";
-            player.vel_x=-20;
+            player.physics.velocity.x=-20;
         }else if(keyState.check("d")){
             player.direction = "right";
-            player.vel_x=20;
+            player.physics.velocity.x=20;
         }
 
         if(!keyState.check("a") && !keyState.check("d")){
-            player.vel_x=0;
+            player.physics.velocity.x=0;
         }
 
         if(keyState.check("q")){
             if(player.direction == "left"){
-                player.vel_x-=30;
+                player.physics.velocity.x-=30;
             }else{
-                player.vel_x+=30;
+                player.physics.velocity.x+=30;
             }
         }
         //JUMP CONDITINALS ******************************************************
@@ -139,13 +139,13 @@ int App::Run(){
             && player.dynamicStates.available_jumps
             && !player.dynamicStates.has_jumped){
 
-            if(player.on_ground){
-                player.on_ground = false;
-                player.vel_y-=30*player.abilities.jump_boost;
+            if(player.physics.on_ground){
+                player.physics.on_ground = false;
+                player.physics.velocity.y-=30*player.abilities.jump_boost;
             }else{
                 std::cout << "Pular no ar\n";
-                player.ac_y = 0;
-                player.vel_y=-30*player.abilities.air_jump_boost;
+                player.physics.aceleration.y = 0;
+                player.physics.velocity.y=-30*player.abilities.air_jump_boost;
             }
             player.dynamicStates.available_jumps--;
             player.dynamicStates.has_jumped = true;
@@ -181,11 +181,11 @@ int App::Run(){
             SDL_FillRect( winSurface, &rec, SDL_MapRGB( winSurface->format, 0,255,0));
 
             if(player.transform.position.y< 680- player.collider.box.y){
-                player.on_ground = false;
+                player.physics.on_ground = false;
             }
             if(player.transform.position.y >= 680- player.collider.box.y){
-                player.on_ground = true;
-                player.vel_y=0;
+                player.physics.on_ground = true;
+                player.physics.velocity.y=0;
                 player.transform.position.y = 680- player.collider.box.y;
             }
         }

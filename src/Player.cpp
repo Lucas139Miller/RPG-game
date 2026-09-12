@@ -17,8 +17,8 @@ Player::Player(){
 
 int Player::change_state(){
 
-    if(this->on_ground){
-        if(this->vel_x == 0.0){
+    if(this->physics.on_ground){
+        if(this->physics.velocity.x == 0.0){
             this->state = PlayerState::idle;
             std::cout << "IDLE\n";
             return 1;
@@ -28,7 +28,7 @@ int Player::change_state(){
             return 1;
         }
     }else{//not on ground
-        if(this->vel_y < 0){
+        if(this->physics.velocity.y < 0){
             this->state = PlayerState::jumping;
             std::cout << "JUMPING\n";
             return 1;

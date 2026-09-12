@@ -15,7 +15,7 @@ enum class GameState : unsigned char{
         IntroCutscene                       //initial cutscene that cannot be paused
 };
 
-struct Coordinates{
+struct Vector2F{
     float x;
     float y;
 };

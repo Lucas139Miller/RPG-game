@@ -5,14 +5,14 @@ Entity::Entity(){
     /*this->state = PlayerState::idle;
     std::cout << "IDLE\n";*/
     this->name = "";
-    this->on_ground = false;
+    this->physics.on_ground = false;
     this->direction = "right";
     this->transform.position.x = 0;
     this->transform.position.y = 0;
-    this->vel_x = 0;
-    this->vel_y = 0;
-    this->ac_x = 0;
-    this->ac_y = 0;
+    this->physics.velocity.x = 0;
+    this->physics.velocity.y = 0;
+    this->physics.aceleration.y = 0;
+    this->physics.aceleration.y = 0;
     std::cout << "Entity created!" << std::endl;
 }
 
@@ -24,14 +24,14 @@ std::string Entity::get_id(){
 
 int Entity::update(){
 
-    std::cout << "ACELERAÇÃO PARA BAIXO: " << this->ac_y << "\n";
+    std::cout << "ACELERAÇÃO PARA BAIXO: " << this->physics.aceleration.y << "\n";
 
-    if(!(this->on_ground)){
-        this->ac_y = gvt;
+    if(!(this->physics.on_ground)){
+        this->physics.aceleration.y = gvt;
         //std::cout << "No ar!\n";
         //std::cout << gvt << std::endl;
     }else{
-        this->ac_y = 0;
+        this->physics.aceleration.y = 0;
         this->dynamicStates.available_jumps = this->abilities.max_jumps;
         //std::cout << "No chão!\n";
         //std::cout << "Pulos restantes: " << this-> dynamicStates.available_jumps << "\n";
@@ -46,13 +46,13 @@ int Entity::update(){
     "Novo: " << this->dynamicStates.last_jump  << "\n";
 */
 
-    this->transform.position.x+=this->vel_x;
-    this->vel_y +=this->ac_y;
-    this->transform.position.y+=this->vel_y;
+    this->transform.position.x+=this->physics.velocity.x;
+    this->physics.velocity.y +=this->physics.aceleration.y;
+    this->transform.position.y+=this->physics.velocity.y;
 
     std::cout << "Pulos restantes: " << this-> dynamicStates.available_jumps << "\n";
     std::cout << "Pulou : " << this-> dynamicStates.has_jumped << "\n";
-    std::cout << "Vel X: " << this->vel_x << std::endl;
+    std::cout << "Vel X: " << this->physics.velocity.x << std::endl;
 
     //this->dynamicStates.last_jump = this->dynamicStates.has_jumped;
 
