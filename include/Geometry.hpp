@@ -1,7 +1,9 @@
 #include <iostream>
+#include "GameTypes.hpp"
 
 #pragma once
 
 class Geometry{
-  bool is_inside();
+
+  virtual float distance(Vector2F position) = 0;
 };
