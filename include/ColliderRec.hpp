@@ -1,14 +1,15 @@
 #include "Collider.hpp"
+#include "GameTypes.hpp"
+#include "Geometry.hpp"
 
 #pragma once
 
 class ColliderRec : public Collider{
 public:
-    struct Collision{
-        bool left;
-        bool right;
-        bool top;
-        bool bottom;
-    };
-    //Coordinates is_inside(ColliderRec rec_box);
+
+    Geometry geometryBody;
+
+    ColliderRec(Vector2F dimensions);
+    int change_dimensions(Vector2F dimensions);
+    ~ColliderRec();
 };

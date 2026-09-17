@@ -1,30 +1,15 @@
-#include "Collider.hpp"
+#include "ColliderRec.hpp"
 
+ColliderRec::ColliderRec(Vector2F dimensions){
 
-/*
-Coordinates ColliderRec::is_inside(ColliderRec rec_box){
-    Coordinates distance;
-    distante.x =0.0;
-    distante.y =0.0;
-    if(this->position.x)
-
-    return do_it!;
-}*/
-/*
-bool ColliderRec::colliding(std::string face, float coord){
-    if(face == "left"){
-        if(coord){
-
-        }
-    }else if(face == "right"){
-
-    }else if(face == "top"){
-
-    }else if(face == "bottom"){
-
-    }
-
-    std::cout << "Invalid object face\n";
-    return false;
+    this->geometryBody.solidInfo.solid_type = "rectangle";
+    this->geometryBody.solidInfo.rec_border = dimensions;
+    this->geometryBody.solidInfo.radius = 0;
 }
-*/
+
+int ColliderRec::change_dimensions(Vector2F dimensions){
+    this->geometryBody.solidInfo.rec_border = dimensions;
+}
+ColliderRec::~ColliderRec(){
+
+}

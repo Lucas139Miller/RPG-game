@@ -1,7 +1,5 @@
 #include <iostream>
-#include <array>
 #include "GameTypes.hpp"
-//#include "ColliderRec.hpp"
 
 #pragma once
 
@@ -12,11 +10,6 @@ public:
     std::string color;
     Vector2F position;
     bool moveable;
-    Rectangle box;
-    //Collision collision;
-
-    //bool colliding(std::string face, float coord);
-    //virtual Coordinates is_inside(ColliderRec rec_box) = 0;
 
     virtual ~Collider() = default;
 };
